@@ -42,6 +42,7 @@ groceries     www.kroger.com
 
 below are the Mapper and Reducer that do the transformation
 
+
 ```
 public class InvertedIndexMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
 public static final int RETAIlER_INDEX = 0;
@@ -69,6 +70,7 @@ Implementation details are not really important but basically Mapper gets a line
 
 Now lets use MRUnit to write various tests for this Job. Three key classes in MRUnits are MapDriver for Mapper Testing, ReduceDriver for Reducer Testing and MapReduceDriver for end to end MapReduce Job testing. This is how we will setup the Test Class.
 
+
 ```
 public class InvertedIndexJobTest {
 
@@ -87,7 +89,6 @@ public class InvertedIndexJobTest {
  mapReduceDriver = MapReduceDriver.newMapReduceDriver(mapper, reducer);
  }
 }
-
 ```
 
 MRUnit supports two styles of testings. First style is to tell the framework both input and output values and let the framework do the assertions, second is the more traditional approach where you do the assertion yourself. Lets write a test using the first approach.
