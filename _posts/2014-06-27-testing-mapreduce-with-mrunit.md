@@ -7,7 +7,9 @@ tags: [MRUnit,Hadoop,MR]
 ---
 {% include JB/setup %}
 
-Testing and debugging multi threaded programs is hard. Now take the same programs and massively distribute them across multiple JVMs deployed on a cluster of machines and the complexity goes off the roof. One way to overcome this complexity is to do testing in isolation and catch as many bugs as possible locally. MRUnit is a testing framework that lets you test and debug Map Reduce jobs in isolation without spinning up a Hadoop cluster. In this  blog post we will cover various features of MRUnit by walking through a simple MapReduce job.
+Testing and debugging multi threaded programs is hard. Now take the same programs and massively distribute them across multiple JVMs deployed on a cluster of machines and the complexity goes off the roof.
+One way to overcome this complexity is to do testing in isolation and catch as many bugs as possible locally. MRUnit is a testing framework that lets you test and debug Map Reduce jobs in isolation without spinning up a Hadoop cluster.
+In this  blog post we will cover various features of MRUnit by walking through a simple MapReduce job.
 
 Lets say we want to take the input below and create an inverted index using MapReduce.
 
@@ -66,10 +68,12 @@ public class InvertedIndexReducer extends MapReduceBase implements Reducer<Text,
  }
 ```
 
-Implementation details are not really important but basically Mapper gets a line at a time, splits the line and emits key value pairs where Key is a category of product and value is the website which is selling the product. For example line retailer,category1,category2 will be emitted as (category1,retailer) and (category2,retailer). Reducer gets a key and a list of values, transforms the list of values to a comma delimited String and emits the key and value out.
+Implementation details are not really important but basically Mapper gets a line at a time, splits the line and emits key value pairs where Key is a category of product and value is the website which is selling the product.
+For example line *retailer,category1,category2* will be emitted as *(category1,retailer)* and *(category2,retailer)*.
+Reducer gets a key and a list of values, transforms the list of values to a comma delimited String and emits the key and value out.
 
-Now lets use MRUnit to write various tests for this Job. Three key classes in MRUnits are MapDriver for Mapper Testing, ReduceDriver for Reducer Testing and MapReduceDriver for end to end MapReduce Job testing. This is how we will setup the Test Class.
-
+Now lets use MRUnit to write various tests for this Job. Three key classes in MRUnits are MapDriver for Mapper Testing, ReduceDriver for Reducer Testing and MapReduceDriver for end to end MapReduce Job testing.
+This is how we will setup the Test Class.
 
 ```
 public class InvertedIndexJobTest {
@@ -91,7 +95,8 @@ public class InvertedIndexJobTest {
 }
 ```
 
-MRUnit supports two styles of testings. First style is to tell the framework both input and output values and let the framework do the assertions, second is the more traditional approach where you do the assertion yourself. Lets write a test using the first approach.
+MRUnit supports two styles of testings. First style is to tell the framework both input and output values and let the framework do the assertions, second is the more traditional approach where you do the assertion yourself.
+Lets write a test using the first approach.
 
 ```
 @Test
@@ -107,7 +112,7 @@ MRUnit supports two styles of testings. First style is to tell the framework bot
  mapDriver.runTest();
 
  }
- ```
+```
 
 In the test above we tell the framework both input and output Key and Value pairs and the framework does the assertion for us. This test can be written in a more traditional way as follow
 
@@ -127,7 +132,6 @@ In the test above we tell the framework both input and output Key and Value pair
  .hasSize(1)
  .containsExactly(new Pair<Text, Text>(outputKey, outputValue));
 }
-
 ```
 
 Sometimes Mapper emits multiple Key Value pairs for a single input. MRUnit provides a fluent API to support this use case. Here is an example
