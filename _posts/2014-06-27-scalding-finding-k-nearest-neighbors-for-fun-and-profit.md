@@ -16,7 +16,7 @@ Before we start cranking code lets get some business rules out of the way.
 Recommended products must be in the same category. For example if someone is viewing a waffle maker and we recommended him a towel, it would be considered a bad recommendation.
 Recommended products must be in the same sub category as well. Our imaginary site sells twenty different types of jeans, if a customer is looking at a Slimming Bootcut, Rinse Wash jeans we should try to recommend other bootcut jeans.
 Recommended products must be in the same price range. For example if someone is looking at a $20 dollar shoes, we won't recommend her 100$ shoes.
-For simplicity sake we will assume that our product catalog is available in CSV format and our products have five attributes namely DEPARTMENT, SUB_DEPARTMENT, PRODUCT, DESCRIPTION, REG_PRICE, SALE_PRICE. A sample of product catalog is available here. Lets start by reading the product catalog in a scalding job and doing a self join on DEPARTMENT, SUB_DEPARTMENT. This partitioning of catalog will take care of the first business rule of recommending products only from the same category.
+For simplicity sake we will assume that our product catalog is available in CSV format and our products have five attributes namely *DEPARTMENT, SUB_DEPARTMENT, PRODUCT, DESCRIPTION, REG_PRICE, SALE_PRICE*. A sample of product catalog is available here. Lets start by reading the product catalog in a scalding job and doing a self join on DEPARTMENT, SUB_DEPARTMENT. This partitioning of catalog will take care of the first business rule of recommending products only from the same category.
 
 ```
 
@@ -101,5 +101,5 @@ Complete recommendation list based on the sample product catalog is here but let
      MICHAEL Michael Kors Shoes,0.75641
 
 ```
-    
+
 As we can see that the top recommendation for "Marc Fisher Shoes Pacca Pumps" is "Nine West Shoes Rocha Platform Pumps". These two shoes are not only within similar price range but are also of same shoe style. Based on our result, it seems like we are able to meet all three of our business objectives even with a very small sample of data. The complete source code for Product Recommendation job is located here.
