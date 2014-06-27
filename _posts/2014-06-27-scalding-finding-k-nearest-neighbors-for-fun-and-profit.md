@@ -34,11 +34,11 @@ For simplicity sake we will assume that our product catalog is available in CSV 
 
     /** * Do a self join based on DEPARTMENT and SUB_DEPARTMENT */
     productMatrix.joinWithSmaller(('DEPARTMENT,'SUB_DEPARTMENT) -> ('DEPARTMENT1,'SUB_DEPARTMENT1), productMatrixDuplicate)
-``
+```
 
 Once we have read in the catalog, we need to figure out how to define similarity between products. From our business rules we know that a product is similar if its in the same price range and also if its in the same category and sub category. Additionally we would like to recommend products of similar styles even within a sub category.  Lets take a look at a few of the records to figure out which columns are useful for similarity calculation.
 
-``
+```
     "DEPARTMENT","SUB_DEPARTMENT","PRODUCT","DESCRIPTION","REG_PRICE","SALE_PRICE"
     "women","shoes","Marc Fisher Shoes","Pacca Pumps shoes","75.00","64.99"
     "women","shoes","Bandolino Shoes","Bayard Wedge Sandals shoes","59.00","49.99"
