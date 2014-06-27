@@ -11,7 +11,8 @@ I first ran into monoid while searching for monads on google. Monoids are ubiqui
 Before we delve into code, lets get some math out of the way. Lets look at the addition operation on integers
 
    1. Addition is associative i.e 1+(2+3)=(1+2)+3
-   2. There is an identity element (e) for addition such that (e+i = i+e = i) i.e 5+0  =  0+5 = 5
+   2. There is an identity element (e) for addition such that (e+i = i+e = i) i.e 5+0  =  0+5 = 5.
+
 
 Any data structure that obeys these two laws is a monoid and there are handful of them. Lets look at some more examples
 
