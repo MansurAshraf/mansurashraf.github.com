@@ -10,8 +10,8 @@ tags: [Scala,fp,monoid]
 I first ran into monoid while searching for monads on google. Monoids are ubiquitous in programming and chances are that you have already used them without being aware of them.  Wikipedia describes monoid as an algebraic structure with a single associative binary operation and an identity element. Now that definition is a mouthful and does not make much sense unless you are not rusty in college algebra. It is much easier to understand them by looking into some examples.
 Before we delve into code, lets get some math out of the way. Lets look at the addition operation on integers
 
-   1) Addition is associative i.e 1+(2+3)=(1+2)+3
-   2) There is an identity element (e) for addition such that (e+i = i+e = i) i.e 5+0  =  0+5 = 5
+   1. Addition is associative i.e 1+(2+3)=(1+2)+3
+   2. There is an identity element (e) for addition such that (e+i = i+e = i) i.e 5+0  =  0+5 = 5
 
 Any data structure that obeys these two laws is a monoid and there are handful of them. Lets look at some more examples
 
