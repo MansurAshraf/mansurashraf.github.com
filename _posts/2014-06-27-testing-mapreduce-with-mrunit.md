@@ -2,7 +2,7 @@
 layout: post
 title: "Testing MapReduce with MRUnit"
 description: ""
-category:Hadoop
+category: Hadoop
 tags: [MRUnit,Hadoop,MR]
 ---
 {% include JB/setup %}
