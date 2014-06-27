@@ -12,6 +12,7 @@ Testing and debugging multi threaded programs is hard. Now take the same program
 Lets say we want to take the input below and create an inverted index using MapReduce.
 
 **Input**
+
 ```
 www.kohls.com,clothes,shoes,beauty,toys
 www.amazon.com,books,music,toys,ebooks,movies,computers
@@ -86,6 +87,7 @@ public class InvertedIndexJobTest {
  mapReduceDriver = MapReduceDriver.newMapReduceDriver(mapper, reducer);
  }
 }
+
 ```
 
 MRUnit supports two styles of testings. First style is to tell the framework both input and output values and let the framework do the assertions, second is the more traditional approach where you do the assertion yourself. Lets write a test using the first approach.
